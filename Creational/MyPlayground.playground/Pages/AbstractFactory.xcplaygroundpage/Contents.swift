@@ -1,6 +1,10 @@
 
 import Foundation
 
+/*
+ The Abstract Factory Design Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It is an extension of the Factory Method Pattern and is often used when there is a need to ensure that the created objects are compatible with each other and belong to the same family of products.
+ */
+
 protocol Button {
     func action() -> String
 }
