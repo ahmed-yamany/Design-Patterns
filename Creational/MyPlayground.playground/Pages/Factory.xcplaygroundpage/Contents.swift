@@ -25,3 +25,10 @@ class ShapeFactory {
         }
     }
 }
+
+let factory = ShapeFactory()
+let shape1: Shape? = factory.create(for: "circle")
+shape1?.draw()
+
+let shape2: Shape? = factory.create(for: "rectangle")
+shape2?.draw()
