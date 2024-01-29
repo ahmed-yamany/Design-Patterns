@@ -4,5 +4,6 @@
         <page name='AbstractFactory'/>
         <page name='Factory'/>
         <page name='Prototype'/>
+        <page name='Builder'/>
     </pages>
 </playground>
