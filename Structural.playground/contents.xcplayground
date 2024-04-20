@@ -3,5 +3,6 @@
     <pages>
         <page name='Adapter'/>
         <page name='Flyweight'/>
+        <page name='proxy'/>
     </pages>
 </playground>
