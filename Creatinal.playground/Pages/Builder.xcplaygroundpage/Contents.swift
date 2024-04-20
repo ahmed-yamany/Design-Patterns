@@ -16,12 +16,14 @@ extension Product: CustomStringConvertible {
 
 class ProductBuilder {
     enum ProductBuilderError: Error, LocalizedError {
-        case quantity(String)
-        case price(String)
+        case name
+        case quantity
+        case price
         var errorDescription: String? {
             switch self {
-                case .quantity(let message): message
-                case .price(let message): message
+                case .name: "invalid name"
+                case .quantity: "invalid quantity"
+                case .price: "invalid price"
             }
         }
     }
@@ -44,19 +46,19 @@ class ProductBuilder {
     
     private func buildName() throws -> String {
         guard !name.isEmpty else {
-            throw ContextManagerError<Product>.name(L10n.AddProduct.Error.Name.empty)
+            throw ProductBuilderError.name
         }
         
         guard name.count > 3 else {
-            throw ContextManagerError<Product>.name(L10n.AddProduct.Error.Name.count)
+            throw ProductBuilderError.name
         }
         
         return name
     }
     
     private func buildQuantity() throws -> Int {
-        guard let quantity = Int32(quantity) else {
-            throw ProductBuilderError.quantity(L10n.AddProduct.Error.Quantity.cast)
+        guard let quantity = Int(quantity) else {
+            throw ProductBuilderError.quantity
         }
         
         return quantity
@@ -64,7 +66,7 @@ class ProductBuilder {
     
     private func buildPrice() throws -> Double {
         guard let price = Double(price) else {
-            throw ProductBuilderError.price(L10n.AddProduct.Error.Price.cast)
+            throw ProductBuilderError.price
         }
         
         return price
